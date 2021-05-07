@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Ejercicio 1
+        let strEx1 = "CRISTIAN";
+        let arrEx1 = [];
+        
+        for(let i=0; i<strEx1.length; i++){
+            arrEx1[i] = strEx1[i]; //This creates the array
+            console.log(arrEx1[i]);
+        }
+
+
+        // Ejercicio 2
+        let strEx2 = "CRISTI4N";
+        let arrEx2 = strEx2.split(""); //This also creates an array
+        
+        for(let i=0; i<arrEx2.length; i++){
+            let msg;
+            letter = arrEx2[i];
+
+            switch(letter){
+                case "A": msg = `He trobat la vocal: ${letter}`; break;
+                case "E": msg = `He trobat la vocal: ${letter}`; break;
+                case "I": msg = `He trobat la vocal: ${letter}`; break;
+                case "O": msg = `He trobat la vocal: ${letter}`; break;
+                case "U": msg = `He trobat la vocal: ${letter}`; break;
+                default: msg = `He trobat la consonant: ${letter}`;
+            }
+
+            if (letter == "0" || letter == "1" || letter == "2" || letter == "3" || letter == "4" || letter == "5" || letter == "6" || letter == "7" || letter == "8" || letter == "9"){
+                msg = `Els noms de persones no contenen el número: ${letter}`;
+            }
+           
+            console.log(msg)
+        }
+
+        
+        // Ejercicio 3
+        let arrEx3 = "CRISTIAN";
+        let nameArr = arrEx3.split("");
+
+
+        let repeatLetters = nameArr.reduce((countLetter, letter) => {
+            countLetter[letter] = (countLetter[letter] || 0) + 1;
+            return countLetter;
+        }, {})
+
+        console.log(repeatLetters);
+
+        
+        // Ejercicio 4
+        let name2 = ["C", "R", "I", "S", "T", "I", "A", "N"];
+        let surname = ["C", "U", "L", "L", "E", "L", "L"];
+        
+        let fullName = name2.concat(" ",surname);
+        console.log(fullName)
+
+
+
+
+ 
+        
+
+/*         myMap.set(claveCadena, "clave cadena");
+        myMap.set(0, "clave cadenasss");
+ 
+        for (var clave of myMap.keys()){
+            alert(clave);
+        }
+
+
+/*         myMap.get(claveCadena)
+
+        console.log(myMap.get(claveCadena)) */
+
+
+
+/*         let arr3 = {0:"C", 0:"R", 0:"I", 0:"S", 0:"T", 0:"I", 0:"A", 0:"N"};
+        let nameArr = [];
+
+
+        let repeatLetters = arr3.reduce((countLetter, letter) => {
+            countLetter[letter] = (countLetter[letter] || 0) + 1;
+            return countLetter;
+        }, {})
+
+        console.log(repeatLetters);
+ */
+        
+
+
+        
+ 
+    </script>
+</body>
+</html>

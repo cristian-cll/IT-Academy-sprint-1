@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       // Ejercicio 1
+       console.log("Hola Mundo");
+
+       // Ejercicio 2
+       alert("Me llamo Cristian");
+
+       // Ejercicio 3
+       let name = "Cristian";
+       let surname = "Cullell";
+       console.log(name + " " + surname);
+
+       // Ejercicio 4
+       let a = 5;
+       let b = 9;
+       console.log(`La suma entre ${a} y ${b} es ${a + b}`);
+
+       // Ejercicio 5
+       let nota_examen = 4;
+       let message = "Ohh has suspendido el examen con un " + nota_examen;
+       
+       if (nota_examen >= 5){
+           message = "Enhorabuena, has aprobado el examen con un " + nota_examen;
+       }
+    
+       alert(message)
+
+       // Ejercicio 6
+       let str = "Tinc un cotxe de color blau";
+       console.log(str);
+       console.log(str.replaceAll("blau", "verd")); //one way
+       console.log(str.replace(/o/g, "u")); //another way
+       
+       // Ejercicio 7
+       let objs = ["taula", "cadira", "ordinador", "llibreta"];
+       
+       const test = objs.map((obj, i)  => {
+           console.log(`L'objecte ${obj} està a la posició ${i}.`);
+       });
+
+       // Ejercicio 8
+
+       function calculadora(operador, valor1, valor2){
+           switch(operador){
+               case "suma": return valor1 + valor2; break;
+               case "resta": return valor1 - valor2; break;
+               case "multiplicació": return valor1 * valor2; break;
+           }
+       }
+
+       var resultat = calculadora('resta',40,20);
+       console.log(resultat);
+       
+
+
+
+   </script> 
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .resultConsole{
+            background-color: lightgray;
+            border: none;
+            width: 25em;
+            font-family: monospace;
+        }
+        .pConsole{
+            border-bottom: 1px solid grey;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h2>Ejercicio 1</h2>
+    <ul>
+        <li>Crea un array amb el teu nom on cada posició correspongui a una lletra</li>
+        <li>Fes un bucle que recorri aquest array i mostri per consola cadascuna de les lletres.</li>
+    </ul>
+
+    <p>Introduce your name: </p><input type="text" id="inputEx1" value="CRISTIAN"><button id="btnEx1">Go</button>
+
+    <div id="resultConsoleEx1" class="resultConsole">
+        <p>Console test</p>
+        <p>your result</p>
+        <p>will show here</p>
+    </div>
+
+    <h2>Ejercicio 2</h2>
+
+    <ul>
+        <li>Al bucle, si la lletra és una vocal imprimeix a la consola: ‘He trobat la VOCAL: __’. Sinó, imprimeix: ‘He trobat la CONSONTANT: __’.</li>
+        <li>Si trobes un número, mostra per pantalla: ‘Els noms de persones no contenen el número: __’</li>
+    </ul>
+
+    <p>Introduce your name: </p><input type="text" id="inputEx2" value="CRISTI4N"><button id="btnEx2">Go</button>
+
+    <div id="resultConsoleEx2" class="resultConsole">
+        <p>Console test</p>
+        <p>your result</p>
+        <p>will show here</p>
+    </div>
+
+    <h2>Ejercicio 3</h2>
+
+    <ul>
+        <li>Emmagatzemar en un Map les lletres de l'array y el nombre de vegades que apareixen.</li>
+    </ul>
+
+    <p>Introduce your name: </p><input type="text" id="inputEx3" value="CRISTIAN"><button id="btnEx3">Go</button>
+
+    <div id="resultConsoleEx3" class="resultConsole">
+        <p>Console test</p>
+        <p>your result</p>
+        <p>will show here</p>
+    </div>
+
+    <h2>Ejercicio 4</h2>
+    <ul>
+        <li>Crea una altra array amb el teu cognom on cada posició correspongui a una lletra.</li>
+        <li>Fusiona els dos arrays en un. A més, afegeix una posició amb un espai buit entre la primera i la segona. És a dir, partim de 'array name i surname i al acabar l’execució només tindrem una que es dirà fullName.</li>
+    </ul>
+    <p>Introduce your name: </p><input type="text" id="inputNameEx4" value="CRISTIAN">
+    <p>Introduce your surname: </p><input type="text" id="inputSurnameEx4" value="CULLELL"><button id="btnEx4">Go</button>
+
+    <div id="resultConsoleEx4" class="resultConsole">
+        <p>Console test</p>
+        <p>your result</p>
+        <p>will show here</p>
+    </div>
+    
+    <h2>Nivell 2</h2>
+    <p>Introduce your text:</p>
+    <textarea id="text" cols="50" rows="10">Una dirección de correo electrónico es la dirección que utiliza para recibir y enviar correos electrónicos. Se muestra a los destinatarios de sus correos electrónicos para que sepan quién le envió un correo electrónico. Cada dirección de correo electrónico sólo se puede asignar una vez en todo el mundo y, por lo tanto, está disponible exclusivamente para usted. No puede cambiar las direcciones de correo electrónico, pero puede eliminarlas en cualquier momento. Una dirección de correo electrónico consiste en el signo @ (arroba), el nombre de usuario delante y el dominio detrás, por ejemplo, nombre-de-usuario@ionos.es: La parte del dominio depende del dominio bajo el cual se crea la dirección de correo electrónico: en nuestro ejemplo es ionos.es. Esta información varía de proveedor a proveedor, por lo que una parte del dominio también puede ser gmail.com o gmx.es si utiliza una dirección de correo electrónico de estos proveedores. Si ha registrado su propio dominio, por ejemplo, www.el-nombre-de-sus-sueños.es, las direcciones de correo electrónico que configura para el dominio lo tienen como parte del dominio (nombre-de-usuario@el-nombre-de-sus-sueños.es o nombre-de-usuario@el-nombre-de-sus-sueños.ES). El nombre de usuario es la parte de una dirección de correo electrónico que puede seleccionar libremente en la medida de lo posible. Puede, por ejemplo, utilizar su propio nombre o el nombre o departamento de una empresa. Si utiliza una dirección de correo electrónico con un proveedor de correo como gmail.com o gmx.es, es posible que la combinación con la parte del dominio deseada ya esté registrada. En este caso, deberá considerar alternativas para el nombre de usuario de su dirección de correo electrónico. Si utiliza su propio dominio, estas restricciones no se aplican porque sólo usted puede crear direcciones de correo electrónico que coincidan con su propio dominio. En resumen, nombre-de-usuario@ionos.es es un email</textarea>
+    <p>Pattern:</p>
+    <input id="input" size="41"  value="([a-z0-9_\.\+-]+)@([a-z0-9_\.\-\ñ]+)\.([a-z\.]{2,6})" type="text">
+    <button id="btnMatch">Go</button>
+    <p id="result"></p>
+
+    <script>
+       // Ejercicio 1
+        document.getElementById("btnEx1").addEventListener("click", function(){
+            document.getElementById("resultConsoleEx1").innerHTML = "";
+            let inputEx1 = document.getElementById("inputEx1").value;  
+            let inputEx1Arr = []   ;      
+            for(let i=0; i<inputEx1.length; i++){
+                inputEx1Arr[i] = inputEx1[i]
+                document.getElementById("resultConsoleEx1").innerHTML += `<p class="pConsole">${inputEx1Arr[i]}</p>`;
+            }
+            console.log(inputEx1Arr);
+        });
+
+        // Ejercicio 2
+        document.getElementById("btnEx2").addEventListener("click", function(){
+            document.getElementById("resultConsoleEx2").innerHTML = "";
+            let inputEx2 = document.getElementById("inputEx2").value;  
+            let inputEx2Arr  = inputEx2.split("");
+            compareLetter(inputEx2Arr);
+        });
+
+        function compareLetter(phrase){   
+            for(let i=0; i<phrase.length; i++){
+                let msg = `He trobat la vocal: ` ;
+                letter = phrase[i];
+
+                switch(letter){
+                    case "A": msg += letter; break;
+                    case "E": msg += letter; break;
+                    case "I": msg += letter; break;
+                    case "O": msg += letter; break;
+                    case "U": msg += letter; break;
+                    default:
+                        if (Number(+letter)){ //If there is a number in a string we put "+" before.  
+                            msg = `Els noms de persones no contenen el número: ${letter}`;
+                        }else{
+                            msg = `He trobat la consonant: ${letter}`;
+                        }      
+                }
+                document.getElementById("resultConsoleEx2").innerHTML += `<p class="pConsole">${msg}</p>`;
+            }
+        };
+
+        // Ejercicio 3
+        document.getElementById("btnEx3").addEventListener("click", function(){
+            let inputEx3 = document.getElementById("inputEx3").value;
+            let inputEx3Arr = inputEx3.split("");
+            let count = {};
+
+            inputEx3Arr.forEach(function(i) { 
+                count[i] = (count[i]||0) + 1;
+            });
+                
+            let str  = JSON.stringify(count);
+            document.getElementById("resultConsoleEx3").innerHTML = `<p class="pConsole">${str}</p>`;
+        });
+
+        // Ejercicio 4
+        document.getElementById("btnEx4").addEventListener("click", function(){
+            let inputNameEx4 = document.getElementById("inputNameEx4").value;
+            let inputSurnameEx4 = document.getElementById("inputSurnameEx4").value;
+            let inputNameEx4Arr = inputNameEx4.split("");
+            let inputSurnameEx4Arr = inputSurnameEx4.split("");
+            let fullName = inputNameEx4Arr.concat(" ",inputSurnameEx4Arr);
+
+            document.getElementById("resultConsoleEx4").innerHTML = `<p class="pConsole">${fullName}</p>`;
+        });
+        
+
+
+        // Nivell2
+        document.getElementById("btnMatch").addEventListener("click", function(){
+            let text = document.getElementById("text").value
+            let input =document.getElementById("input").value
+            let regex = new RegExp (input, "gm");
+            let result =document.getElementById("result")
+            return result.innerHTML = showMatch(text, regex);
+        });
+
+        function showMatch(string, pattern){
+            let match = string.match(pattern);
+            let result =[];
+
+            for (let i=0; i<match.length;i++){  
+                for(let j=i+1; j<match.length; j++){
+                    if(match[i] == match[j]){
+                        result.pop(match[i]);
+                        result.push(match[j]);
+                    }else{
+                        result.push(match[i]);
+                    }
+                }   
+            }
+            return result;
+        }
+            
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button{
+            padding: 1.5em;
+            border: 3px solid rgb(130, 141, 145);
+            font-size: 1.5em;
+            width: 4em;
+        }
+        button:hover{
+            background-color: lightblue ;
+        }
+        button:active{
+            background-color: antiquewhite;
+        }
+        p{
+            height: 1em;
+        }
+        input{
+            width: 98%;
+            font-size: 1.5em;
+            text-align: right;
+            height: 4em;
+            border: none;
+            background-color: rgb(199, 238, 199);
+        }
+        .display{
+            text-align: right;
+            border: 2px solid rgb(130, 141, 145);
+            border-radius: 3px;
+            background-color: rgb(199, 238, 199);
+        }
+        table{
+            background-color:lightsteelblue;
+            padding: 2.5em;
+            border-radius: 2em;
+            box-shadow: 1px 1px 8px 2px lightgrey;
+        }
+    </style>
+</head>
+<body>
+    
+    <table>
+        <tr >
+            <tr >
+                <td class="display" colspan="4"><p id="displayMemo"></p></td>
+            </tr>
+            <tr>
+                <td class="display" colspan="4"><input id="displayNum" type="text" readonly></td>
+            </tr>
+        </tr>
+        <tr>
+            <td><button onclick="onClickNum(1)">1</button></td>
+            <td><button onclick="onClickNum(2)">2</button></td>
+            <td><button onclick="onClickNum(3)">3</button></td>
+            <td><button onclick="onClickOp('+')">+</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="onClickNum(4)">4</button></td>
+            <td><button onclick="onClickNum(5)">5</button></td>
+            <td><button onclick="onClickNum(6)">6</button></td>
+            <td><button onclick="onClickOp('-')">-</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="onClickNum(7)">7</button></td>
+            <td><button onclick="onClickNum(8)">8</button></td>
+            <td><button onclick="onClickNum(9)">9</button></td>
+            <td><button onclick="onClickOp('/')">/</button></td>
+        </tr>
+        <tr>
+            <td><button onclick="onRefresh()">C</button></td>
+            <td><button onclick="onClickNum(0)">0</button></td>
+            <td><button onclick="onClickEqual()">=</button></td>
+            <td><button onclick="onClickOp('x')">X</button></td>
+        </tr>
+    </table>
+    
+
+   <script>
+    let val1 = 0;
+    let operador;
+
+
+        function onClickNum(num){
+            displayNum = document.getElementById("displayNum");
+            displayNum.value += num;
+            document.getElementById("displayMemo").innerHTML += num;
+        }
+
+        function onClickOp(op){
+            document.getElementById("displayMemo").innerHTML += op;
+            operador = op;
+            let val1input = parseInt(document.getElementById("displayNum").value);
+            val1=val1input;
+            document.getElementById("displayNum").value = "";
+        }
+
+        function onClickEqual(){      
+            let val2 = parseInt(document.getElementById("displayNum").value);
+            let result = document.getElementById("displayNum");
+            result.value = calculadora(operador, val1, val2);
+        }
+
+        function calculadora(operador, valor1, valor2){
+           let message;
+           switch(operador){
+               case "+": message = valor1 + valor2; break;
+               case "-": message = valor1 - valor2; break;
+               case "x": message = valor1 * valor2; break;
+               case "/": 
+                    if (valor2 == 0){
+                        message = "you can not divide by zero!"; break;
+                    }else{
+                        message = valor1 / valor2; break;
+                    }
+               default: message = "expression not valid";
+           }
+           return message;
+       }
+
+       function onRefresh(){
+            document.getElementById('displayNum').value = '';
+            document.getElementById("displayMemo").innerHTML = '';
+        }
+
+   </script> 
+</body>
+</html>
