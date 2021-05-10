@@ -23,19 +23,17 @@ let salaries = [{
 
 //Ejercicio 1
 const getEmpleado = (id) => {
-    return new Promise((resolve, reject) => {
-        employees.map(employee => {
-            if (employee.id == id) {
-                resolve(employee);
+    return new Promise((resolve) => {
+        for(employee of employees){
+            if(employee.id === id){
+                resolve(employee)
             }
-        });
-        reject(new Error(`This ${id} does not exists.`));
+        }
     });
 }
 
 getEmpleado(1)
-    .then(res => console.log(res))
-    .catch(e => console.log(e))
+    .then(res => console.log("Ejercicio 1", res))
 
 //Ejercicio 2
 //Example of employee for getSalario()
@@ -45,20 +43,18 @@ let Cristian = {
 };
 
 const getSalario = (employee) => {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
         salaries.map(salary => {
             if (salary.id === employee.id) {
                 resolve(salary);
             }
         });
-        eject(new Error(`This ${employee.name} does not exists.`));
     });
 }
 
-getSalario(Cristian).then(res => console.log("test employee", res))
+getSalario(Cristian).then(res => console.log("Ejercicio 2. Test employee", res))
 
 //Ejercicio 3
 getEmpleado(1)
     .then(res => getSalario(res))
-    .then(res => console.log(res))
-    .catch(e => console.log(e))
+    .then(res => console.log("Ejercicio 3", res))

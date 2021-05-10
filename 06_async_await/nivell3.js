@@ -37,11 +37,11 @@ const getEmpleado = (id) => {
 
 const getSalario = (employee) => {
     return new Promise((resolve, reject) => {
-        salaries.map(function (salary) {
-            if (salary.id === employee.id) {
+        for (salary of salaries){
+            if(employee.id === salary.id){
                 return resolve(salary);
             }
-        });
+        }
         reject(new Error(`${employee.name} is not associate with any salary.`))
     });
 }
@@ -56,4 +56,4 @@ async function showData(id){
 }
 
 
-showData(3);
+showData(2);

@@ -35,11 +35,11 @@ const getEmpleado = (id) => {
 
 const getSalario = (employee) => {
     return new Promise((resolve) => {
-        salaries.map(function (salary) {
-            if (salary.id === employee.id) {
-                return resolve(salary);
+        for (salary of salaries){
+            if(employee.id === salary.id){
+                resolve(salary)
             }
-        });
+        }
     });
 }
 
@@ -52,4 +52,4 @@ async function showData(id){
 }
 
 
-showData(3);
+showData(2);

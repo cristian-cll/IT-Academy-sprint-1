@@ -24,22 +24,22 @@ let salaries = [{
 //Ejercicio 1
 const getEmpleado = (id) => {
     return new Promise((resolve, reject) => {
-        employees.map(function (employee) {
-            if (employee.id === id) {
-                return resolve(employee);
+        for (employee of employees){
+            if(employee.id === id){
+                resolve(employee)
             }
-        });
+        }
         reject(new Error(`This id: ${id} does not exists.`))
     });
 }
 
 const getSalario = (employee) => {
     return new Promise((resolve, reject) => {
-        salaries.map(function (salary) {
-            if (salary.id === employee.id) {
-                return resolve(salary);
+        for (salary of salaries){
+            if(employee.id === salary.id){
+                resolve(salary)
             }
-        });
+        }
         reject(new Error(`This ${employee.name} does not exists.`))
     });
 }
@@ -53,4 +53,4 @@ async function showData(id){
     console.log(salario);
 }
 
-showData(3);
+showData(1);

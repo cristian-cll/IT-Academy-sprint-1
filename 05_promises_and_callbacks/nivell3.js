@@ -24,22 +24,22 @@ let salaries = [{
 //Ejercicio 3
 const getEmpleado = (id) => {
     return new Promise((resolve, reject) => {
-        employees.map(function (employee) {
-            if (employee.id === id) {
-                return resolve(employee);
+        for(employee of employees){
+            if(employee.id === id){
+                resolve(employee);
             }
-        });
+        }
         reject(new Error(`This id: ${id} does not exists.`))
     });
 }
 
 const getSalario = (employee) => {
     return new Promise((resolve, reject) => {
-        salaries.map(function (salary) {
-            if (salary.id === employee.id) {
-                return resolve(salary);
+        for (salary of salaries){
+            if(salary.id === employee.id){
+                resolve(salary);
             }
-        });
+        }
         reject(new Error(`This ${employee.name} does not exists.`))
     });
 }
@@ -51,4 +51,4 @@ getEmpleado(3)
 
 
 //si no hay transformacion se puede evitar el array function y pasar la function del tiron
-getEmpleado(3).then(getSalario).then(console.log).catch(console.error)
+// getEmpleado(3).then(getSalario).then(console.log).catch(console.error)
