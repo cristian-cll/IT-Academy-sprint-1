@@ -22,39 +22,35 @@ let salaries = [{
 
 
 //Ejercicio 1
+
 const getEmpleado = (id) => {
-    return new Promise((resolve) => {
-        for(employee of employees){
-            if(employee.id === id){
-                resolve(employee)
-            }
-        }
-    });
-}
-
-getEmpleado(1)
-    .then(res => console.log("Ejercicio 1", res))
-
-//Ejercicio 2
-//Example of employee for getSalario()
-let Cristian = {
-    id: 2,
-    name: 'Cristian'
-};
-
-const getSalario = (employee) => {
-    return new Promise((resolve) => {
-        salaries.map(salary => {
-            if (salary.id === employee.id) {
-                resolve(salary);
-            }
+    return new Promise((resolve, reject) => {
+        employees.map(employee => {
+            employee.id === id ? resolve(employee) : reject("No existe el empleado");
         });
     });
 }
 
-getSalario(Cristian).then(res => console.log("Ejercicio 2. Test employee", res))
+getEmpleado(1)
+    .then(employee => console.log("Ejercicio 1: ", employee))
+
+
+//Ejercicio 2
+
+const getSalario = (employee) => {
+    return new Promise((resolve) => {
+        salaries.map(salary => {
+            salary.id === employee.id ? resolve(salary) : reject("No existe el salario");
+        });
+    });
+}
+
+getSalario(employees[0])
+    .then(salary => console.log("Ejercicio 2: ", salary))
 
 //Ejercicio 3
 getEmpleado(1)
-    .then(res => getSalario(res))
-    .then(res => console.log("Ejercicio 3", res))
+    .then(employee => {getSalario(employee)
+        .then(salary => console.log(`Ejercicio 3: El sueldo de ${employee.name} es de ${salary.salary}`));
+    })
+    .catch((err) => console.log(err));
