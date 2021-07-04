@@ -1,4 +1,6 @@
-let num1 = 5;
-let num2 = 6;
+let num_1 = 5;
+let num_2 = 6;
 
-(() => document.write(num1 + num2))();
+const suma = ((num1, num2) => num1 + num2)(num_1, num_2);
+
+console.log(suma);
