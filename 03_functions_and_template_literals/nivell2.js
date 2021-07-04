@@ -1,22 +1,13 @@
 //Ejercicio 1
-let arr = [];
 
-for (let i = 0; i < 10; i++) {
-    arr.push(function count() {
-        document.writeln(`vez número ${i}`)
-        for (let i = 0; i <= 9; i++) {
-            document.writeln(`<p>${i}</p>`)
-        }
-    });
-}
+const collegue_name = "Cristian";
+const collegue_surname = "Cullell" ;
 
-for (let i = 0; i < arr.length; i++) {
-    arr[i]();
-}
+const printFullName = (name, surname) => `El meu nom es ${name} ${surname}`;
+
+console.log(printFullName(collegue_name, collegue_surname));
+
 
 //Ejecicio 2
-let userName = "Cristian";
 
-let name = (function (name) {
-    return document.writeln(name)
-})(userName);
+console.log(`${printFullName(collegue_name, collegue_surname)} y soc de Barcelona`);

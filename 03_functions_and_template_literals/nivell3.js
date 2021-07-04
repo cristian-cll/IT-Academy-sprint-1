@@ -1,12 +1,27 @@
 //Ejercicio 1
-let name = "Cristian";
-let surname = "Cullell";
 
-document.writeln(`<p>Mi nombre es ${name} y mi primer apellido es ${surname}.</p>`);
+let arrFn = [];
 
-//Ejercicio 2
-function printName(name, surname) {
-        return `<p>Mi nombre es ${name} y mi primer apellido es ${surname}.</p>`;
+const count = () => {
+        for (let i = 0; i < 10; i++){
+        console.log(i)
+        }
 }
 
-document.writeln(`${printName("Juan", "Carrasco")}`);
+const fillArray = () => {
+        for (let i = 0; i < 10; i++){
+                console.log("num.", i);
+                arrFn.push(count());
+        }
+}
+
+fillArray();
+
+
+//Ejercicio 2
+
+const userName = "Cristian";
+
+const getName = ((name) => {
+    return console.log("Ejercicio 2: ", name)
+})(userName);
