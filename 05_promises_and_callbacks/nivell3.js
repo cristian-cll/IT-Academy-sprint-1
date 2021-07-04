@@ -24,30 +24,24 @@ let salaries = [{
 //Ejercicio 3
 const getEmpleado = (id) => {
     return new Promise((resolve, reject) => {
-        for(employee of employees){
-            if(employee.id === id){
-                resolve(employee);
-            }
-        }
-        reject(new Error(`This id: ${id} does not exists.`))
+        const employee = employees.find(employee => employee.id === id);
+        employee ? resolve(employee) : reject("No existe el empleado");
     });
 }
 
 const getSalario = (employee) => {
     return new Promise((resolve, reject) => {
-        for (salary of salaries){
-            if(salary.id === employee.id){
-                resolve(salary);
-            }
-        }
-        reject(new Error(`This ${employee.name} does not exists.`))
+        const salary = salaries.find(salary => salary.id === employee.id);
+        salary ? resolve(salary) : reject("No existe el salario");
     });
 }
 
-getEmpleado(3)
-    .then(res => getSalario(res))
-    .then(res => console.log(res))
-    .catch(e => console.log(e))
+
+getEmpleado(2)
+    .then(employee => {getSalario(employee)
+        .then(salary => console.log(`El sueldo de ${employee.name} es de ${salary.salary}`));
+    })
+    .catch((err) => console.log(err));
 
 
 //si no hay transformacion se puede evitar el array function y pasar la function del tiron

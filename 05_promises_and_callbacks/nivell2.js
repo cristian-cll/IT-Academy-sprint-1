@@ -25,23 +25,20 @@ let salaries = [{
 
 const getEmpleado = (id) => {
     return new Promise((resolve, reject) => {
-        employees.map(employee => {
-            employee.id === id ? resolve(employee) : reject("No existe el empleado");
-        });
+        const employee = employees.find(employee => employee.id === id);
+        employee ? resolve(employee) : reject("No existe el empleado");
     });
 }
 
 getEmpleado(1)
     .then(employee => console.log("Ejercicio 1: ", employee))
 
-
 //Ejercicio 2
 
 const getSalario = (employee) => {
-    return new Promise((resolve) => {
-        salaries.map(salary => {
-            salary.id === employee.id ? resolve(salary) : reject("No existe el salario");
-        });
+    return new Promise((resolve, reject) => {
+        const salary = salaries.find(salary => salary.id === employee.id);
+        salary ? resolve(salary) : reject("No existe el salario");
     });
 }
 
@@ -49,7 +46,8 @@ getSalario(employees[0])
     .then(salary => console.log("Ejercicio 2: ", salary))
 
 //Ejercicio 3
-getEmpleado(1)
+
+getEmpleado(2)
     .then(employee => {getSalario(employee)
         .then(salary => console.log(`Ejercicio 3: El sueldo de ${employee.name} es de ${salary.salary}`));
     })
