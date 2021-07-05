@@ -22,34 +22,32 @@ let salaries = [{
 
 //Ejercicio 1
 const getEmpleado = (id) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
         setTimeout(()=>{
-            for (employee of employees){
-                if(employee.id === id){
-                    return resolve(employee);
-                }
-            }
+            const employee = employees.find(employee => employee.id === id);
+            employee ? resolve(employee) : reject("No existe el empleado");
         },2000);
     });
 }
 
 const getSalario = (employee) => {
-    return new Promise((resolve) => {
-        for (salary of salaries){
-            if(employee.id === salary.id){
-                resolve(salary)
-            }
-        }
+    return new Promise((resolve, reject) => {
+        const salary = salaries.find(salary => salary.id === employee.id);
+        salary ? resolve(salary) : reject("No existe el salario");
     });
 }
 
 async function showData(id){
-    const empleado = await getEmpleado(id);
-    const salario = await getSalario(empleado);
-
-    console.log(empleado);
-    console.log(salario);
+    try{
+        const empleado = await getEmpleado(id);
+        const salario = await getSalario(empleado);
+    
+        console.log(`El empleado ${empleado.name} tiene un salario de ${salario.salary}`);
+    }
+    catch(err){
+        console.log(err);
+    }
 }
 
 
-showData(2);
+showData(1);

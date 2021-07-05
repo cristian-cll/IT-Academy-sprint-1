@@ -25,35 +25,30 @@ let salaries = [{
 const getEmpleado = (id) => {
     return new Promise((resolve, reject) => {
         setTimeout(()=>{
-            for (employee of employees){
-                if(employee.id === id){
-                    return resolve(employee);
-                }
-            }
-            reject(new Error(`This id: ${id} does not exists.`))
+            const employee = employees.find(employee => employee.id === id);
+            employee ? resolve(employee) : reject("No existe el empleado");
         },2000);
     });
 }
 
 const getSalario = (employee) => {
     return new Promise((resolve, reject) => {
-        for (salary of salaries){
-            if(employee.id === salary.id){
-                return resolve(salary);
-            }
-        }
-        reject(new Error(`${employee.name} is not associate with any salary.`))
+        const salary = salaries.find(salary => salary.id === employee.id);
+        salary ? resolve(salary) : reject("No existe el salario");
     });
 }
 
-
 async function showData(id){
-    const empleado = await getEmpleado(id);
-    const salario = await getSalario(empleado);
-
-    console.log(empleado);
-    console.log(salario);
+    try{
+        const empleado = await getEmpleado(id);
+        const salario = await getSalario(empleado);
+    
+        console.log(`El empleado ${empleado.name} tiene un salario de ${salario.salary}`);
+    }
+    catch(err){
+        console.log(err);
+    }
 }
 
 
-showData(2);
+showData(3);
