@@ -25,7 +25,7 @@ const homedir = require('os').homedir()
 const path = require('path');
 
 
-const showDir = () => {
+const showUserDir = () => {
     exec("dir", {cwd: path.join(homedir)}, (err, stdout, stderr) => {  
     if (err) {  
         console.error(err);  
@@ -35,12 +35,11 @@ const showDir = () => {
     });  
 }
 
-showDir();
+showUserDir();
 
 
 
-
-
+// Interesting: to use the explorer to open a folder with child_proceess
 /* function fileExplorer() {
     const spawn = require('child_process').spawn;
     spawn('C:\\Windows\\explorer.exe', {cwd: path.join(homedir)});

@@ -1,13 +1,3 @@
-const encoder = (buff, toEnc) => {
-    // Converting the buffer into string encoding parameter
-    return buff.toString(toEnc);
-}
-
-const decoder = (buff, fromEnc, toEnc) => {
-    // Converting the buffer into string encoding parameter
-    return Buffer.from(buff, fromEnc).toString(toEnc);
-}
-
 const crypto = require('crypto');
 const password = "Your key here";
 
@@ -37,6 +27,17 @@ const aes192cbcDecrypt = (buff) =>{
     let decrypted = decipher.update(buf);
   
     return Buffer.concat([decrypted, decipher.final()]);
+}
+
+
+const encoder = (buff, toEnc) => {
+    // Converting the buffer into string encoding parameter
+    return buff.toString(toEnc);
+}
+
+const decoder = (buff, fromEnc, toEnc) => {
+    // Converting the buffer into string encoding parameter
+    return Buffer.from(buff, fromEnc).toString(toEnc);
 }
 
 module.exports = {encoder, aes192cbcEncrypt, aes192cbcDecrypt, decoder}
