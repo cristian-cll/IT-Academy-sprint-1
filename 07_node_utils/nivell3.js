@@ -42,7 +42,6 @@ const encrypt = async (file, encoding) => {
     // Converting string into buffer
     const buff = Buffer.from(dataFile, 'utf8');
 
-
     const aes192cbcBuff = aes192cbcEncrypt(buff);
     console.log(`-- Cyphering to aes192cbc. Buffer: ${aes192cbcBuff.toString("utf8")}`);
     console.log(`-- Creating encrypt_${file}`);
@@ -67,7 +66,7 @@ const decrypt = async (file, encFile, encoding) => {
     // Converting string into buffer
     const buff = Buffer.from(dataFile, 'binary');
 
-    //console.log("Buffer: ", buff);
+
     console.log(`-- Decyphering from aes192cbc... `);
     const aes192cbcBuff = aes192cbcDecrypt(buff);
 
@@ -84,8 +83,6 @@ const decrypt = async (file, encFile, encoding) => {
     // Deleting initial file
     await deleteFile(file);
 }
-
-
 
 
 const init = async () =>{

@@ -10,7 +10,6 @@ const writeDataInFile = async (fileName, data) => {
 }
 
 
-
 const readDataFile = async (file, enc) => {
 
     const data = await readFile(file, enc, (err, data) => {
@@ -19,6 +18,7 @@ const readDataFile = async (file, enc) => {
     console.log(`-- Readed data from ${file}: ${data}`);
     return data;
 }
+
 
 const deleteFile = async (file) => {
     console.log(`-- Deleted ${file}`);

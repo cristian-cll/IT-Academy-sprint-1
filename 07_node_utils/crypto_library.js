@@ -40,4 +40,6 @@ const decoder = (buff, fromEnc, toEnc) => {
     return Buffer.from(buff, fromEnc).toString(toEnc);
 }
 
+
+
 module.exports = {encoder, aes192cbcEncrypt, aes192cbcDecrypt, decoder}
