@@ -35,6 +35,7 @@ const encoder = (buff, toEnc) => {
     return buff.toString(toEnc);
 }
 
+
 const decoder = (buff, fromEnc, toEnc) => {
     // Converting the buffer into string encoding parameter
     return Buffer.from(buff, fromEnc).toString(toEnc);

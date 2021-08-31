@@ -14,7 +14,6 @@ const compressFile = (file, ext) => {
         .on("finish", () => console.log("Successfully compressed"));
 }
 
-
 compressFile("test.txt", "zip");
 
 

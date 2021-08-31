@@ -5,6 +5,7 @@ const {encoder, aes192cbcEncrypt, aes192cbcDecrypt, decoder} = require("./crypto
 const {writeDataInFile, readDataFile, deleteFile} = require("././files_library");
 
 const hexAndBase64Encoder = async (file, encoding) =>{
+
     console.log(`********************* Initializing hexAndBase64Encoder with ${file}  *********************`);
     
     // Reading file data
@@ -58,6 +59,7 @@ const encrypt = async (file, encoding) => {
 
 
 const decrypt = async (file, encFile, encoding) => {
+    
     console.log(`********************* Initializing decrypt with ${file} *********************`);
         
     // Reading file data
@@ -65,7 +67,6 @@ const decrypt = async (file, encFile, encoding) => {
 
     // Converting string into buffer
     const buff = Buffer.from(dataFile, 'binary');
-
 
     console.log(`-- Decyphering from aes192cbc... `);
     const aes192cbcBuff = aes192cbcDecrypt(buff);
